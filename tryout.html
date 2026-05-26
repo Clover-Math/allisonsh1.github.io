@@ -1,1 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
 
+    <link rel="stylesheet" href="/css/poop.css">
+    <link rel="icon"
+    type="image/png"
+    href="/img/favicon.png">
+
+    <title>Tryout</title>
+</head>
+
+<body>
+
+<header>
+    <heading>
+        <a href="/">
+            <img src="/img/cloverlogo.png"
+            class="logo-image"
+            alt="Clover Image">
+        </a>
+    </heading>
+
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/ourtest">Our Test</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/register">Register</a></li>
+            <li><a href="/archive">Archive</a></li>
+            <li><a href="/tryout"
+            style="color: rgb(75,151,86)">
+            Tryout
+            </a></li>
+        </ul>
+    </nav>
+</header>
+
+
+<div class="announcement">
+
+<b>
+Try Clover sample problems!
+</b>
+
+</div>
+
+
+<div class="subheader">
+Tryout Problems
+</div>
+
+
+<div class="text">
+Choose a form and solve random problems.
+</div>
+
+
+<div style="padding-left:30px;padding-right:30px;">
+
+<button
+class="button"
+onclick="start('A')">
+
+Form A
+
+</button>
+
+<button
+class="button"
+onclick="start('B')">
+
+Form B
+
+</button>
+
+</div>
+
+
+<div
+id="problemArea"
+style="
+display:none;
+text-align:center;
+padding:20px;
+">
+
+<div
+class="subheader"
+id="title">
+</div>
+
+
+<img
+id="problemImg"
+class="bannerimg">
+
+
+<br><br>
+
+
+<button
+class="button"
+onclick="showSolution()">
+
+Reveal Solution
+
+</button>
+
+
+<button
+class="button"
+onclick="nextProblem()">
+
+Next Problem
+
+</button>
+
+
+<br><br>
+
+
+<img
+id="solutionImg"
+class="bannerimg"
+style="display:none;">
+
+</div>
+
+
+
+<footer>
+
+<div class="banner">
+
+<img src="/img/greenfooter.png"
+style="width:100%;">
+
+<div class="footer">
+
+<p>
+
+Email:
+<a href=
+"mailto:contactclovermath@gmail.com">
+
+contactclovermath@gmail.com
+
+</a>
+
+</p>
+
+</div>
+
+</div>
+
+</footer>
+
+
+
+<script>
+
+const data=[
+
+{
+form:"A",
+num:3,
+img:"/img/problems/A/3.jpg",
+sol:"/img/solutions/A/3.jpg"
+},
+
+{
+form:"A",
+num:7,
+img:"/img/problems/A/7.jpg",
+sol:"/img/solutions/A/7.jpg"
+},
+
+{
+form:"A",
+num:12,
+img:"/img/problems/A/12.jpg",
+sol:"/img/solutions/A/12.jpg"
+},
+
+{
+form:"A",
+num:19,
+img:"/img/problems/A/19.jpg",
+sol:"/img/solutions/A/19.jpg"
+},
+
+{
+form:"A",
+num:27,
+img:"/img/problems/A/27.jpg",
+sol:"/img/solutions/A/27.jpg"
+},
+
+{
+form:"B",
+num:2,
+img:"/img/problems/B/2.jpg",
+sol:"/img/solutions/B/2.jpg"
+},
+
+{
+form:"B",
+num:8,
+img:"/img/problems/B/8.jpg",
+sol:"/img/solutions/B/8.jpg"
+},
+
+{
+form:"B",
+num:13,
+img:"/img/problems/B/13.jpg",
+sol:"/img/solutions/B/13.jpg"
+},
+
+{
+form:"B",
+num:21,
+img:"/img/problems/B/21.jpg",
+sol:"/img/solutions/B/21.jpg"
+},
+
+{
+form:"B",
+num:29,
+img:"/img/problems/B/29.jpg",
+sol:"/img/solutions/B/29.jpg"
+}
+
+];
+
+let form="";
+let used=[];
+let current=null;
+
+
+function start(f){
+
+form=f;
+
+used=[];
+
+document
+.getElementById(
+"problemArea"
+)
+.style.display=
+"block";
+
+nextProblem();
+
+}
+
+
+
+function nextProblem(){
+
+let pool=
+
+data.filter(
+
+p=>
+
+p.form===form &&
+
+!used.includes(
+p.num
+)
+
+);
+
+
+if(pool.length===0){
+
+used=[];
+
+pool=data.filter(
+
+p=>
+
+p.form===form
+
+);
+
+}
+
+
+current=
+
+pool[
+Math.floor(
+Math.random()
+*pool.length
+)
+];
+
+
+used.push(
+current.num
+);
+
+
+document
+.getElementById(
+"title"
+)
+.innerText=
+
+"Form "
++current.form+
+" Problem #"+
+current.num;
+
+
+document
+.getElementById(
+"problemImg"
+)
+.src=
+
+current.img;
+
+
+document
+.getElementById(
+"solutionImg"
+)
+.style.display=
+
+"none";
+
+}
+
+
+
+function showSolution(){
+
+const img=
+
+document
+.getElementById(
+"solutionImg"
+);
+
+
+img.src=
+
+current.sol;
+
+
+img.style.display=
+
+"block";
+
+}
+
+</script>
+
+</body>
+</html>
