@@ -2,14 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-    content="width=device-width, initial-scale=1.0">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/poop.css">
-    <link rel="icon"
-    type="image/png"
-    href="/img/favicon.png">
-
+    <link rel="icon" type="image/png" href="/img/favicon.png">
     <title>Tryout</title>
 </head>
 
@@ -18,9 +13,7 @@
 <header>
     <heading>
         <a href="/">
-            <img src="/img/cloverlogo.png"
-            class="logo-image"
-            alt="Clover Image">
+            <img src="/img/cloverlogo.png" class="logo-image" alt="Clover Image">
         </a>
     </heading>
 
@@ -31,21 +24,14 @@
             <li><a href="/about">About</a></li>
             <li><a href="/register">Register</a></li>
             <li><a href="/archive">Archive</a></li>
-            <li><a href="/tryout"
-            style="color: rgb(75,151,86)">
-            Tryout
-            </a></li>
+            <li><a href="/tryout" style="color: rgb(75,151,86)">Tryout</a></li>
         </ul>
     </nav>
 </header>
 
 
 <div class="announcement">
-
-<b>
-Try Clover sample problems!
-</b>
-
+<b>Try Clover sample problems!</b>
 </div>
 
 
@@ -53,24 +39,26 @@ Try Clover sample problems!
 Tryout Problems
 </div>
 
-
 <div class="text">
 Choose a form and solve random problems.
 </div>
 
 
-<div style="padding-left:30px;padding-right:30px;">
+<div style="padding-left:30px;padding-right:30px;padding-bottom:20px;">
 
 <button
 class="button"
+style="width:180px;margin-right:25px;"
 onclick="start('A')">
 
 Form A
 
 </button>
 
+
 <button
 class="button"
+style="width:180px;"
 onclick="start('B')">
 
 Form B
@@ -78,6 +66,7 @@ Form B
 </button>
 
 </div>
+
 
 
 <div
@@ -99,25 +88,91 @@ id="problemImg"
 class="bannerimg">
 
 
+<div
+class="text"
+style="
+text-align:center;
+">
+
+Enter radicals like:
+
+<b>2*sqrt(13)</b>
+
+</div>
+
+
+<br>
+
+
+<input
+id="answerBox"
+type="text"
+placeholder="Enter answer"
+style="
+padding:10px;
+width:250px;
+font-family:Poppins;
+">
+
+
 <br><br>
 
 
 <button
 class="button"
+style="width:180px;"
+onclick="checkAnswer()">
+
+Submit Answer
+
+</button>
+
+
+<br><br>
+
+
+<div
+id="result"
+class="text"
+style="
+font-weight:bold;
+text-align:center;
+">
+</div>
+
+
+<br>
+
+
+<div
+id="solutionButtons"
+style="display:none;">
+
+<button
+class="button"
+style="
+width:200px;
+margin-right:25px;
+"
 onclick="showSolution()">
 
-Reveal Solution
+Reveal Official Solution
 
 </button>
 
 
 <button
 class="button"
+style="
+width:180px;
+"
 onclick="nextProblem()">
 
 Next Problem
 
 </button>
+
+</div>
 
 
 <br><br>
@@ -128,6 +183,7 @@ id="solutionImg"
 class="bannerimg"
 style="display:none;">
 
+
 </div>
 
 
@@ -136,7 +192,8 @@ style="display:none;">
 
 <div class="banner">
 
-<img src="/img/greenfooter.png"
+<img
+src="/img/greenfooter.png"
 style="width:100%;">
 
 <div class="footer">
@@ -161,6 +218,7 @@ contactclovermath@gmail.com
 
 
 
+
 <script>
 
 const data=[
@@ -168,6 +226,7 @@ const data=[
 {
 form:"A",
 num:3,
+answer:"4",
 img:"/img/problems/A/3.jpg",
 sol:"/img/solutions/A/3.jpg"
 },
@@ -175,6 +234,7 @@ sol:"/img/solutions/A/3.jpg"
 {
 form:"A",
 num:7,
+answer:"4",
 img:"/img/problems/A/7.jpg",
 sol:"/img/solutions/A/7.jpg"
 },
@@ -182,6 +242,7 @@ sol:"/img/solutions/A/7.jpg"
 {
 form:"A",
 num:12,
+answer:"14",
 img:"/img/problems/A/12.jpg",
 sol:"/img/solutions/A/12.jpg"
 },
@@ -189,6 +250,7 @@ sol:"/img/solutions/A/12.jpg"
 {
 form:"A",
 num:19,
+answer:"sqrt(13)",
 img:"/img/problems/A/19.jpg",
 sol:"/img/solutions/A/19.jpg"
 },
@@ -196,6 +258,7 @@ sol:"/img/solutions/A/19.jpg"
 {
 form:"A",
 num:27,
+answer:"5",
 img:"/img/problems/A/27.jpg",
 sol:"/img/solutions/A/27.jpg"
 },
@@ -203,6 +266,7 @@ sol:"/img/solutions/A/27.jpg"
 {
 form:"B",
 num:2,
+answer:"134",
 img:"/img/problems/B/2.jpg",
 sol:"/img/solutions/B/2.jpg"
 },
@@ -210,6 +274,7 @@ sol:"/img/solutions/B/2.jpg"
 {
 form:"B",
 num:8,
+answer:"2",
 img:"/img/problems/B/8.jpg",
 sol:"/img/solutions/B/8.jpg"
 },
@@ -217,6 +282,7 @@ sol:"/img/solutions/B/8.jpg"
 {
 form:"B",
 num:13,
+answer:"1440",
 img:"/img/problems/B/13.jpg",
 sol:"/img/solutions/B/13.jpg"
 },
@@ -224,6 +290,7 @@ sol:"/img/solutions/B/13.jpg"
 {
 form:"B",
 num:21,
+answer:"5/12",
 img:"/img/problems/B/21.jpg",
 sol:"/img/solutions/B/21.jpg"
 },
@@ -231,6 +298,7 @@ sol:"/img/solutions/B/21.jpg"
 {
 form:"B",
 num:29,
+answer:"15/32",
 img:"/img/problems/B/29.jpg",
 sol:"/img/solutions/B/29.jpg"
 }
@@ -240,6 +308,7 @@ sol:"/img/solutions/B/29.jpg"
 let form="";
 let used=[];
 let current=null;
+
 
 
 function start(f){
@@ -277,16 +346,13 @@ p.num
 
 );
 
-
 if(pool.length===0){
 
 used=[];
 
 pool=data.filter(
 
-p=>
-
-p.form===form
+p=>p.form===form
 
 );
 
@@ -298,7 +364,8 @@ current=
 pool[
 Math.floor(
 Math.random()
-*pool.length
+*
+pool.length
 )
 ];
 
@@ -315,7 +382,8 @@ document
 .innerText=
 
 "Form "
-+current.form+
++
+current.form+
 " Problem #"+
 current.num;
 
@@ -325,7 +393,6 @@ document
 "problemImg"
 )
 .src=
-
 current.img;
 
 
@@ -334,8 +401,86 @@ document
 "solutionImg"
 )
 .style.display=
-
 "none";
+
+
+document
+.getElementById(
+"answerBox"
+)
+.value="";
+
+
+document
+.getElementById(
+"result"
+).innerHTML="";
+
+
+document
+.getElementById(
+"solutionButtons"
+)
+.style.display=
+"none";
+
+}
+
+
+
+function checkAnswer(){
+
+let user=
+
+document
+.getElementById(
+"answerBox"
+)
+.value
+.trim()
+.toLowerCase();
+
+
+let correct=
+
+current.answer
+.toLowerCase();
+
+
+let result=
+
+document
+.getElementById(
+"result"
+);
+
+
+if(user===correct){
+
+result.innerHTML=
+
+"✅ Correct!";
+
+}
+
+else{
+
+result.innerHTML=
+
+"❌ Incorrect.<br><br>Correct answer: <b>"
++
+current.answer+
+"</b>";
+
+}
+
+
+document
+.getElementById(
+"solutionButtons"
+)
+.style.display=
+"block";
 
 }
 
@@ -343,21 +488,19 @@ document
 
 function showSolution(){
 
-const img=
+document
+.getElementById(
+"solutionImg"
+)
+.src=
+current.sol;
+
 
 document
 .getElementById(
 "solutionImg"
-);
-
-
-img.src=
-
-current.sol;
-
-
-img.style.display=
-
+)
+.style.display=
 "block";
 
 }
