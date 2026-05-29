@@ -1,19 +1,10 @@
 header {
     background-color: #c3e6b3;
     color: #fff;
-    padding: 10px;
+    padding: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center; /* Align items vertically */
-}
-
-.announce {
-    color: #000000;
-    padding: 10px;
-    font-size: 3vw;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 body {
@@ -127,40 +118,44 @@ input[type="password"] {
 /**faq**/  
 body {
     font-family: 'Poppins', sans-serif;
-  }
-  
-  .faq-toggle {
+}
+
+.content {
+    padding: 25px;
+}
+
+.faq-toggle {
     display: none;
-  }
-  
-  .faq-question {
+}
+
+.faq-question {
     cursor: pointer;
     padding: 10px;
     background-color: #f0f0f000;
     position: relative;
-  }
-  
-  .faq-question::after {
+}
+
+.faq-question::after {
     content: '\25C2'; /* Unicode character for left arrow */
     position: absolute;
-  }
-  
-  .faq-toggle:checked ~ .faq-question::after {
-    content: '\25BE'; /* Unicode character for down arrow */
-  }
+}
 
-  .faq-question:hover {
+.faq-toggle:checked ~ .faq-question::after {
+    content: '\25BE'; /* Unicode character for down arrow */
+}
+
+.faq-question:hover {
     color:rgb(125, 196, 136)
-  }
-  
-  .faq-answer {
+}
+
+.faq-answer {
     display: none;
     padding: 10px;
-  }
-  
-  .faq-toggle:checked ~ .faq-answer {
+}
+
+.faq-toggle:checked ~ .faq-answer {
     display: block;
-  }
+}
 
 .faq-answer img {
     max-width: 46%; /* Adjust width to leave some space between images */
@@ -226,14 +221,14 @@ a[href="/archive"]:hover {
 
     .button {
         width: 100%;
-        padding: 6px;
+        padding: 10px;
         background-color: rgb(125, 196, 136);
         color: #fff;
         border: none;
         border-radius: 4px;
         cursor: pointer;
         transition: background-color 0.3s;
-    
+
         text-decoration: none; 
         font-weight: normal; 
         font-family: 'Poppins', sans-serif;
@@ -243,16 +238,12 @@ a[href="/archive"]:hover {
     .subheader {
         background-color: #ffffff00; 
         color: rgb(75, 151, 86);
-    
         padding-top: 20px;
         padding-left: 20px;
         padding-right: 20px;
-    
         text-align: left;
-    
         font-family: 'Poppins', serif;
         font-weight: italic;
-        font-size: 6vw;
     }
 
     .subheader2 {
