@@ -24,9 +24,115 @@
     margin-top: 0;
 }
 
+.event-gallery {
+    margin: 0 auto 40px;
+    max-width: 900px;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.event-gallery__title {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    text-align: center !important;
+}
+
+.carousel {
+    align-items: center;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.carousel-viewport {
+    align-items: center;
+    background: #f3f7f3;
+    border-radius: 12px;
+    display: flex;
+    height: min(58vw, 520px);
+    justify-content: center;
+    overflow: hidden;
+    width: min(76vw, 760px);
+}
+
+.carousel-image {
+    height: 100%;
+    object-fit: contain;
+    transition: opacity 450ms ease-in-out, transform 450ms ease-in-out;
+    width: 100%;
+}
+
+.carousel-image.is-changing {
+    opacity: 0.35;
+    transform: scale(1.01);
+}
+
+.carousel-button,
+.carousel-dot {
+    background: rgb(75, 151, 86);
+    border: 0;
+    cursor: pointer;
+}
+
+.carousel-button {
+    border-radius: 50%;
+    color: white;
+    font-size: 26px;
+    height: 44px;
+    line-height: 1;
+    width: 44px;
+}
+
+.carousel-button:hover,
+.carousel-button:focus-visible,
+.carousel-dot.is-active {
+    background: rgb(46, 112, 56);
+}
+
+.carousel-button:focus-visible,
+.carousel-dot:focus-visible {
+    outline: 3px solid #1a5d25;
+    outline-offset: 3px;
+}
+
+.carousel-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.carousel-dot {
+    background: #b8d2bc;
+    border-radius: 50%;
+    height: 10px;
+    padding: 0;
+    width: 10px;
+}
+
 
 /* phones */
 @media screen and (max-width: 768px) {
+    .event-gallery {
+        padding: 0 12px;
+    }
+
+    .carousel {
+        gap: 7px;
+    }
+
+    .carousel-viewport {
+        height: 62vw;
+        width: 72vw;
+    }
+
+    .carousel-button {
+        font-size: 20px;
+        height: 34px;
+        width: 34px;
+    }
+
     .image-container {
         width: 33.33%;
         max-width: 100%;

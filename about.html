@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/poop.css">
-    <link rel="stylesheet" href="/css/about.css">
+    <link rel="stylesheet" href="css/poop.css">
+    <link rel="stylesheet" href="css/about.css">
     <link rel="icon" type="image/png" href="/img/favicon.png">
     <title>Clover - About</title>
 </head>
@@ -43,6 +43,18 @@
     <div class="text">
         Clover is based in Naperville, Illinois.
     </div>
+
+    <section class="event-gallery" aria-label="2026 Clover Math event photos">
+        <div class="subheader event-gallery__title">2026 Competition</div>
+        <div class="carousel" data-carousel>
+            <button class="carousel-button carousel-button--previous" type="button" aria-label="Show previous event image">&#10094;</button>
+            <div class="carousel-viewport">
+                <img class="carousel-image" src="img/aboutimgs/Image_20260804_213730_428.webp" alt="2026 Clover Math event photo 1 of 13">
+            </div>
+            <button class="carousel-button carousel-button--next" type="button" aria-label="Show next event image">&#10095;</button>
+        </div>
+        <div class="carousel-controls" aria-label="Choose an event image"></div>
+    </section>
 
     <div class="subheader">
         Our Team
@@ -162,7 +174,7 @@
         </div>
     </section>
 
-     <img src="img\aboutimgs\updatedgroupphoto.png" class="bannerimg" alt="group photo">
+    <img src="img\aboutimgs\updatedgroupphoto.png" class="bannerimg" alt="group photo">
     
     <div class="subheader">
         Sponsors
@@ -177,7 +189,7 @@
     <img src="img/wolfram-logo.png" alt="Wolfram Logo" width="200">
     </div>
     <footer>
-        <link rel="stylesheet" href="/css/poop.css">
+        <link rel="stylesheet" href="css/poop.css">
         <div class="banner">
             <img src="img\greenfooter.png" alt="Clover Image" style="width:100%;">
             <div class="footer">
@@ -185,5 +197,87 @@
             </div>
         </div>
     </footer>
+    <script>
+        (() => {
+            const images = [
+                'Image_20260804_213730_428.webp',
+                'Image_20260804_213729_787.webp',
+                'Image_20260804_213729_828.webp',
+                'Image_20260804_213729_910.webp',
+                'Image_20260804_213729_988.webp',
+                'Image_20260804_213730_091.webp',
+                'Image_20260804_213730_193.webp',
+                'Image_20260804_213730_272.webp',
+                'Image_20260804_213730_506.webp',
+                'Image_20260804_213730_625.webp',
+                'Image_20260804_213730_646.webp',
+                'Image_20260804_213730_662.webp',
+                'Image_20260804_213730_679.webp'
+            ];
+            const carousel = document.querySelector('[data-carousel]');
+            const image = carousel.querySelector('.carousel-image');
+            const controls = document.querySelector('.carousel-controls');
+            let activeIndex = 0;
+            let timer;
+
+            const dots = images.map((_, index) => {
+                const dot = document.createElement('button');
+                dot.type = 'button';
+                dot.className = 'carousel-dot';
+                dot.setAttribute('aria-label', `Show event image ${index + 1}`);
+                dot.addEventListener('click', () => {
+                    showImage(index);
+                    startAutoplay();
+                });
+                controls.appendChild(dot);
+                return dot;
+            });
+
+            function showImage(index) {
+                activeIndex = (index + images.length) % images.length;
+                image.classList.add('is-changing');
+                window.setTimeout(() => {
+                    image.src = `img/aboutimgs/${images[activeIndex]}`;
+                    image.alt = `2026 Clover Math event photo ${activeIndex + 1} of ${images.length}`;
+                    image.classList.remove('is-changing');
+                }, 350);
+                dots.forEach((dot, dotIndex) => {
+                    const isActive = dotIndex === activeIndex;
+                    dot.classList.toggle('is-active', isActive);
+                    dot.setAttribute('aria-current', isActive ? 'true' : 'false');
+                });
+            }
+
+            function startAutoplay() {
+                window.clearInterval(timer);
+                timer = window.setInterval(() => showImage(activeIndex + 1), 4000);
+            }
+
+            carousel.querySelector('.carousel-button--previous').addEventListener('click', () => {
+                showImage(activeIndex - 1);
+                startAutoplay();
+            });
+            carousel.querySelector('.carousel-button--next').addEventListener('click', () => {
+                showImage(activeIndex + 1);
+                startAutoplay();
+            });
+            carousel.addEventListener('mouseenter', () => window.clearInterval(timer));
+            carousel.addEventListener('mouseleave', startAutoplay);
+            carousel.addEventListener('focusin', () => window.clearInterval(timer));
+            carousel.addEventListener('focusout', startAutoplay);
+            carousel.addEventListener('keydown', (event) => {
+                if (event.key === 'ArrowLeft') {
+                    showImage(activeIndex - 1);
+                    startAutoplay();
+                } else if (event.key === 'ArrowRight') {
+                    showImage(activeIndex + 1);
+                    startAutoplay();
+                }
+            });
+
+            showImage(0);
+            startAutoplay();
+        })();
+    </script>
 </body>
 </html>
